@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.DodajSlikuVozilaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Label
+                    Margin="10"
+                    FontSize="Title"
+                    HorizontalTextAlignment="Center"
+                    Text="Odaberi fotografije"
+                    TextColor="#303F9F" />
+                <FlexLayout
+                    JustifyContent="SpaceEvenly"
+                    VerticalOptions="CenterAndExpand"
+                    Wrap="Wrap">
+                    <Image
+                        x:Name="Img1"
+                        HeightRequest="100"
+                        Source="addImage.png"
+                        WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapImg1" Tapped="TapImg1_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        x:Name="Img2"
+                        HeightRequest="100"
+                        Source="addImage.png"
+                        WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapImg2" Tapped="TapImg2_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        x:Name="Img3"
+                        HeightRequest="100"
+                        Source="addImage.png"
+                        WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapImg3" Tapped="TapImg3_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        x:Name="Img4"
+                        HeightRequest="100"
+                        Source="addImage.png"
+                        WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapImg4" Tapped="TapImg4_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        x:Name="Img5"
+                        HeightRequest="100"
+                        Source="addImage.png"
+                        WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapImg5" Tapped="TapImg5_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        x:Name="Img6"
+                        HeightRequest="100"
+                        Source="addImage.png"
+                        WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapImg6" Tapped="TapImg6_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </FlexLayout>
+
+                <Label
+                    Margin="10"
+                    FontSize="Subtitle"
+                    HorizontalTextAlignment="Center"
+                    Text="Možete odabrati maksimalno 6 fotografija"
+                    TextColor="#303F9F" />
+                <Button
+                    x:Name="BtnDone"
+                    BackgroundColor="#303F9F"
+                    Clicked="BtnDone_Clicked"
+                    Text="Done"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.PocetnaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:eVehicleDealership.Mobile.Converters"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Frame Padding="10">
+                <StackLayout Orientation="Horizontal" Spacing="20">
+                    <Image Aspect="AspectFit" Source="searchIcon.png" />
+                    <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Center"
+                        Text="Pretraga vozila"
+                        TextColor="#303F9F"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapSearch" Tapped="TapSearch_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <CollectionView
+                x:Name="CvVozila"
+                SelectionChanged="CvVozila_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.Header>
+                    <StackLayout Padding="5" Spacing="20">
+                        <Label
+                            Margin="10,0,0,0"
+                            FontSize="Small"
+                            Text="Pretraga po kategorijama"
+                            TextColor="#303F9F" />
+                        <FlexLayout JustifyContent="SpaceEvenly">
+                            <Image
+                                HeightRequest="60"
+                                Source="bike.png"
+                                WidthRequest="60">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapMotocikli" Tapped="TapMotocikli_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image
+                                HeightRequest="60"
+                                Source="car.png"
+                                WidthRequest="60">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapAutomobili" Tapped="TapAutomobili_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image
+                                HeightRequest="60"
+                                Source="truck.png"
+                                WidthRequest="60">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapKamioni" Tapped="TapKamioni_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </FlexLayout>
+                        <Label
+                            Margin="10,0,0,0"
+                            FontSize="Small"
+                            Text="Novododana vozila"
+                            TextColor="#303F9F" />
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="10">
+                            <Frame
+                                Padding="0"
+                                CornerRadius="5"
+                                HasShadow="True">
+                                <StackLayout Spacing="25">
+                                    <forms:CachedImage
+                                        Aspect="AspectFill"
+                                        LoadingPlaceholder="placeholder.png"
+                                        Source="{Binding Slika, Converter={StaticResource imgConv}}" />
+                                    <Label
+                                        Margin="0,0,0,20"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Naziv}"
+                                        TextColor="#303F9F" />
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

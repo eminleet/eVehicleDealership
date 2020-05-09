@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.ProdajaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:eVehicleDealership.Mobile.Behaviors"
+    xmlns:Validators="clr-namespace:eVehicleDealership.Mobile.Validators.Implementations"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10">
+                <StackLayout.Behaviors>
+                    <Behaviors:ValidationGroupBehavior x:Name="form" />
+                </StackLayout.Behaviors>
+                <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Unos novog oglasa" />
+                <BoxView BackgroundColor="Black" HeightRequest="1" />
+                <StackLayout Margin="20">
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Stanje" />
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                        <Frame
+                            x:Name="FrameKoristeno"
+                            Margin="10"
+                            Padding="50,10,50,10"
+                            BackgroundColor="#0779E4"
+                            BorderColor="#303F9F"
+                            CornerRadius="0"
+                            HasShadow="False">
+                            <Label
+                                x:Name="LblKoristeno"
+                                Text="Korišteno"
+                                TextColor="White" />
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="TapKoristeno" Tapped="TapKoristeno_Tapped" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            x:Name="FrameNovo"
+                            Margin="10"
+                            Padding="50,10,50,10"
+                            BorderColor="#303F9F"
+                            CornerRadius="0"
+                            HasShadow="False">
+                            <Label
+                                x:Name="LblNovo"
+                                Text="Novo"
+                                TextColor="Black" />
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="TapNovo" Tapped="TapNovo_Tapped" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Naslov [opcionalno]" />
+                    <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="*Ako ostavite prazno, naslov će biti '[NazivProizvođača] [NazivModela]'" />
+                    <Entry x:Name="EntNaslov" />
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Proizvođač*" />
+                    <Picker
+                        x:Name="PickerProizvodjac"
+                        Title="Odaberite proizvođača"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedIndexChanged="PickerProizvodjac_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Model*" />
+                    <Picker
+                        x:Name="PickerModel"
+                        Title="Odaberite model"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedIndexChanged="PickerModel_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Cijena*" />
+                    <Entry x:Name="EntCijena" Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Kategorija*" />
+                    <Picker
+                        x:Name="PickerKategorija"
+                        Title="Odaberite kategoriju"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedIndexChanged="PickerKategorija_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Država*" />
+                    <Picker
+                        x:Name="PickerDrzava"
+                        Title="Odaberite državu"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedIndexChanged="PickerDrzava_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        x:Name="LblGrad"
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        IsVisible="False"
+                        Text="Grad*" />
+                    <Picker
+                        x:Name="PickerGrad"
+                        Title="Odaberite grad"
+                        IsVisible="False"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedIndexChanged="PickerGrad_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Godište*" />
+                    <Picker
+                        x:Name="PickerGodiste"
+                        Title="Odaberite godište"
+                        SelectedIndexChanged="PickerGodiste_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Kubikaža*" />
+                    <Picker
+                        x:Name="PickerKubikaza"
+                        Title="Odaberite kubikažu"
+                        SelectedIndexChanged="PickerKubikaza_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Konjskih snaga*" />
+                    <Entry x:Name="EntKonjskihSnaga" Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Boja*" />
+                    <Picker
+                        x:Name="PickerBoja"
+                        Title="Odaberite boju"
+                        SelectedIndexChanged="PickerBoja_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Transmisija*" />
+                    <Picker
+                        x:Name="PickerTransmisija"
+                        Title="Odaberite transmisiju"
+                        SelectedIndexChanged="PickerTransmisija_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Gorivo*" />
+                    <Picker
+                        x:Name="PickerGorivo"
+                        Title="Odaberite gorivo"
+                        SelectedIndexChanged="PickerGorivo_SelectedIndexChanged">
+                        <Picker.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="SelectedIndex">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Start"
+                        Text="Kratki opis [opcionalno]" />
+                    <Editor
+                        x:Name="KratkiOpis"
+                        AutoSize="Disabled"
+                        HeightRequest="100"
+                        Placeholder="Kratki opis Vašeg vozila" />
+                </StackLayout>
+                <Label
+                    x:Name="LblWarning"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    Text="Niste unijeli sva obavezna polja!"
+                    TextColor="Red">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference BtnSell}, Path=IsEnabled}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Button
+                    x:Name="BtnSell"
+                    BackgroundColor="#303F9F"
+                    Clicked="BtnSell_Clicked"
+                    IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+                    Text="Postavi oglas"
+                    TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    mc:Ignorable="d">
+
+    <StackLayout>
+        <ffimageloading:CachedImage
+            CacheType="All"
+            HeightRequest="150"
+            Source="https://pict1.reezocar.com/images/autoscout24.fr/RZCATSFR9EDCBE625206/FERRARI-LAFERRARI-00.jpg"
+            WidthRequest="150">
+            <ffimageloading:CachedImage.Transformations>
+                <transformations:CircleTransformation />
+            </ffimageloading:CachedImage.Transformations>
+        </ffimageloading:CachedImage>
+    </StackLayout>
+
+</ContentPage>

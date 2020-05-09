@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.RegistracijaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:eVehicleDealership.Mobile.Behaviors"
+    xmlns:Validators="clr-namespace:eVehicleDealership.Mobile.Validators.Implementations"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="25" Spacing="15">
+                <StackLayout.Behaviors>
+                    <Behaviors:ValidationGroupBehavior x:Name="form" />
+                </StackLayout.Behaviors>
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <ImageButton
+                        x:Name="BtnBack"
+                        Grid.Column="0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="BtnBack_Clicked"
+                        Source="backArrow.png" />
+                    <Label
+                        Grid.Column="1"
+                        Margin="5"
+                        FontSize="Large"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="REGISTRACIJA"
+                        TextColor="#303F9F" />
+                </Grid>
+                <Entry
+                    x:Name="EntIme"
+                    Keyboard="Text"
+                    Placeholder="Ime"
+                    PlaceholderColor="#666AD1"
+                    TextColor="#303F9F">
+                    <Entry.Behaviors>
+                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviors:ValidationBehavior.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviors:ValidationBehavior.Validators>
+                        </Behaviors:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Entry
+                    x:Name="EntPrezime"
+                    Keyboard="Text"
+                    Placeholder="Prezime"
+                    PlaceholderColor="#666AD1"
+                    TextColor="#303F9F">
+                    <Entry.Behaviors>
+                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviors:ValidationBehavior.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviors:ValidationBehavior.Validators>
+                        </Behaviors:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Entry
+                    x:Name="EntEmail"
+                    Keyboard="Email"
+                    Placeholder="Email (email@email.com)"
+                    PlaceholderColor="#666AD1"
+                    TextColor="#303F9F">
+                    <Entry.Behaviors>
+                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviors:ValidationBehavior.Validators>
+                                <Validators:RequiredValidator />
+                                <Validators:FormatValidator Format="[^@]+@[^\.]+\..+" Message="Nepravilan format!" />
+                            </Behaviors:ValidationBehavior.Validators>
+                        </Behaviors:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Entry
+                    x:Name="EntTelefon"
+                    Keyboard="Telephone"
+                    Placeholder="Telefon"
+                    PlaceholderColor="#666AD1"
+                    TextColor="#303F9F">
+                    <Entry.Behaviors>
+                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviors:ValidationBehavior.Validators>
+                                <Validators:FormatValidator Format="^(\+)?([ 0-9]){9,16}$" Message="Nepravilan format!" />
+                            </Behaviors:ValidationBehavior.Validators>
+                        </Behaviors:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Entry
+                    x:Name="EntLozinka"
+                    IsPassword="True"
+                    Keyboard="Default"
+                    Placeholder="Lozinka (min. 8 karaktera)"
+                    PlaceholderColor="#666AD1"
+                    TextColor="#303F9F">
+                    <Entry.Behaviors>
+                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviors:ValidationBehavior.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviors:ValidationBehavior.Validators>
+                        </Behaviors:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                    x:Name="LblPotvrdaLozinkeWarning"
+                    FontSize="Small"
+                    HorizontalTextAlignment="Start"
+                    IsVisible="False"
+                    Text="Potvrda lozinke i lozinka nisu iste!"
+                    TextColor="Red" />
+                <Entry
+                    x:Name="EntLozinkaPotvrda"
+                    IsPassword="True"
+                    Keyboard="Default"
+                    Placeholder="Potvrda lozinke"
+                    PlaceholderColor="#666AD1"
+                    TextChanged="EntLozinkaPotvrda_TextChanged"
+                    TextColor="#303F9F">
+                    <Entry.Behaviors>
+                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviors:ValidationBehavior.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviors:ValidationBehavior.Validators>
+                        </Behaviors:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                    x:Name="LblWarning"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    Text="Niste unijeli sva obavezna polja!"
+                    TextColor="Red">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference BtnSignUp}, Path=IsEnabled}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Button
+                    x:Name="BtnSignUp"
+                    BackgroundColor="#303F9F"
+                    Clicked="BtnSignUp_Clicked"
+                    IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+                    Text="Registruj se"
+                    TextColor="White" />
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="Već imate korisnički nalog?"
+                    TextColor="#666AD1" />
+                <Button
+                    x:Name="BtnLogin"
+                    BackgroundColor="#666AD1"
+                    Clicked="BtnLogin_Clicked"
+                    Text="Prijava"
+                    TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

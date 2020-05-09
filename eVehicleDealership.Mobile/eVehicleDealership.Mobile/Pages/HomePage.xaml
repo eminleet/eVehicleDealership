@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="eVehicleDealership.Mobile.Pages.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:eVehicleDealership.Mobile.Pages"
+    androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
+    BarBackgroundColor="#0779E4"
+    NavigationPage.HasNavigationBar="False"
+    SelectedTabColor="White"
+    UnselectedTabColor="White"
+    mc:Ignorable="d">
+    <pages:PocetnaPage Title="Početna" IconImageSource="explore.png" />
+    <pages:ProdajaPage Title="Prodaja" IconImageSource="sell.png" />
+    <pages:MojiOglasiPage Title="Moji oglasi" IconImageSource="ads.png" />
+    <pages:ProfilePage Title="Profil" IconImageSource="user.png" />
+</TabbedPage>

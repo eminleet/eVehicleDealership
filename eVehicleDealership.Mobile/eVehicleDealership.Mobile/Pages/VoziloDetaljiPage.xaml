@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.VoziloDetaljiPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:eVehicleDealership.Mobile.Converters"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    ios:Page.UseSafeArea="True"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid HeightRequest="250" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="6.5*" />
+                        <RowDefinition Height="1.5*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="9*" />
+                        <ColumnDefinition Width="1.5*" />
+                    </Grid.ColumnDefinitions>
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="Black"
+                        Opacity="0.3" />
+                    <CarouselView
+                        x:Name="CrvImages"
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Scrolled="CrvImages_Scrolled">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <forms:CachedImage LoadingPlaceholder="placeholder.png" Source="{Binding Slika, Converter={StaticResource imgConv}}" />
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <ImageButton
+                        x:Name="BtnBack"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,20,0,0"
+                        BackgroundColor="Transparent"
+                        Clicked="BtnBack_Clicked"
+                        Source="closeRoundedIcon.png" />
+                    <Label
+                        x:Name="LblBrojac"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        BackgroundColor="#303F9F"
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Center"
+                        TextColor="White"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+                <rating:SfRating
+                    x:Name="Rating"
+                    Margin="0,5"
+                    HorizontalOptions="Center"
+                    Precision="Exact"
+                    ReadOnly="True" />
+                <Label
+                    x:Name="LblOcjena"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center" />
+                <Button
+                    x:Name="BtnUserOcjena"
+                    Margin="0,5"
+                    Clicked="BtnUserOcjena_Clicked"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="Ocijenite oglas" />
+                <rating:SfRating
+                    x:Name="UserRating"
+                    Margin="0,5"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    Precision="Standard"
+                    ValueChanged="UserRating_ValueChanged" />
+                <Label
+                    x:Name="LblUserRatingMessage"
+                    Margin="0,5"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    TextColor="#0779E4" />
+                <StackLayout Margin="20" Spacing="20">
+                    <Label
+                        x:Name="LblCijena"
+                        FontSize="Large"
+                        TextColor="#303F9F" />
+                    <Label
+                        x:Name="LblNaziv"
+                        FontSize="Small"
+                        TextColor="#303F9F" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="locationIcon.png" />
+                        <Label
+                            x:Name="LblLokacija"
+                            Grid.Column="1"
+                            LineBreakMode="WordWrap"
+                            TextColor="#303F9F" />
+                    </Grid>
+                </StackLayout>
+                <BoxView BackgroundColor="#707070" HeightRequest="1" />
+                <StackLayout Margin="20" Spacing="20">
+                    <Label
+                        FontSize="Large"
+                        Text="Detalji"
+                        TextColor="#303F9F" />
+                    <Grid ColumnSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Model"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblModel"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Proizvođač"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblProizvodjac"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="Godište"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblGodiste"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Text="Stanje"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblStanje"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Text="Kubikaža"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblKubikaza"
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Text="Konjskih snaga"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblKonjskihSnaga"
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Text="Boja"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblBoja"
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            Text="Transmisija"
+                            TextColor="#303F9F" />
+                        <Label
+                            x:Name="LblTransmisija"
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            TextColor="#303F9F" />
+
+                    </Grid>
+                </StackLayout>
+                <BoxView BackgroundColor="#707070" HeightRequest="1" />
+                <StackLayout Margin="20" Spacing="20">
+                    <Label
+                        FontSize="Large"
+                        Text="Kratki opis"
+                        TextColor="#303F9F" />
+                    <Label x:Name="LblKratkiOpis" TextColor="#303F9F" />
+                </StackLayout>
+
+                <BoxView BackgroundColor="#707070" HeightRequest="1" />
+                <StackLayout Margin="20" Spacing="20">
+                    <Label
+                        FontSize="Large"
+                        Text="Kontakt"
+                        TextColor="#303F9F" />
+                    <forms:CachedImage
+                        x:Name="ImgKontakt"
+                        HeightRequest="80"
+                        HorizontalOptions="Start"
+                        LoadingPlaceholder="userPlaceholder.png"
+                        WidthRequest="80">
+                        <forms:CachedImage.Transformations>
+                            <transformations:CircleTransformation />
+                        </forms:CachedImage.Transformations>
+                    </forms:CachedImage>
+
+                </StackLayout>
+                <Grid ColumnSpacing="2" VerticalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="BtnEmail"
+                        Grid.Column="0"
+                        BackgroundColor="#303F9F"
+                        Clicked="BtnEmail_Clicked"
+                        Text="EMAIL"
+                        TextColor="White" />
+                    <Button
+                        x:Name="BtnSms"
+                        Grid.Column="1"
+                        BackgroundColor="#303F9F"
+                        Clicked="BtnSms_Clicked"
+                        Text="SMS"
+                        TextColor="White" />
+                    <Button
+                        x:Name="BtnPoziv"
+                        Grid.Column="2"
+                        BackgroundColor="#303F9F"
+                        Clicked="BtnPoziv_Clicked"
+                        Text="POZIV"
+                        TextColor="White" />
+                </Grid>
+                <BoxView BackgroundColor="#707070" HeightRequest="1" />
+                <CollectionView
+                    x:Name="CvPreporucenaVozila"
+                    IsVisible="False"
+                    SelectionChanged="CvPreporucenaVozila_SelectionChanged"
+                    SelectionMode="Single">
+                    <CollectionView.Header>
+                        <StackLayout Padding="5" Spacing="20">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="Medium"
+                                Text="Preporučena vozila"
+                                TextColor="#0779E4" />
+                        </StackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView Padding="10">
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <StackLayout Spacing="25">
+                                        <forms:CachedImage
+                                            Aspect="AspectFill"
+                                            LoadingPlaceholder="placeholder.png"
+                                            Source="{Binding Slika, Converter={StaticResource imgConv}}" />
+                                        <Label
+                                            Margin="0,0,0,20"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Naziv}"
+                                            TextColor="#303F9F" />
+                                    </StackLayout>
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

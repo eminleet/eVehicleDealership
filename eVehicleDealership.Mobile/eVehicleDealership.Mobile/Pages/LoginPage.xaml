@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout Margin="25" Spacing="15">
+            <Label
+                Grid.Column="1"
+                Margin="30"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="PRIJAVA NA SISTEM"
+                TextColor="#303F9F" />
+            <Entry
+                x:Name="EntEmail"
+                Keyboard="Email"
+                Placeholder="Email"
+                PlaceholderColor="#666AD1"
+                TextColor="#303F9F" />
+            <Entry
+                x:Name="EntPassword"
+                IsPassword="True"
+                Keyboard="Default"
+                Placeholder="Lozinka"
+                PlaceholderColor="#666AD1"
+                TextColor="#303F9F" />
+            <Button
+                x:Name="BtnLogin"
+                BackgroundColor="#303F9F"
+                Clicked="BtnLogin_Clicked"
+                Text="Prijava"
+                TextColor="White" />
+            <Label
+                HorizontalTextAlignment="Center"
+                Text="Nemate kreiran korisnički nalog?"
+                TextColor="#666AD1" />
+            <Button
+                x:Name="BtnRegister"
+                BackgroundColor="#666AD1"
+                Clicked="BtnRegister_Clicked"
+                Text="Registracija"
+                TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

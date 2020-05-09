@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.VozilaListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:eVehicleDealership.Mobile.Converters"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="True"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <StackLayout Orientation="Vertical">
+                <ImageButton
+                    x:Name="BtnBack"
+                    Margin="15"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="BtnBack_Clicked"
+                    HorizontalOptions="Start"
+                    Source="backArrow.png"
+                    VerticalOptions="Center" />
+                <BoxView BackgroundColor="#707070" HeightRequest="1" />
+            </StackLayout>
+
+            <ListView
+                x:Name="LvVozila"
+                CachingStrategy="RecycleElement"
+                Footer=""
+                HasUnevenRows="True"
+                ItemSelected="LvVozila_ItemSelected"
+                SeparatorColor="#707070">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="0" Padding="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="7*" />
+                                </Grid.ColumnDefinitions>
+                                <forms:CachedImage
+                                    Grid.Row="0"
+                                    Grid.RowSpan="4"
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HeightRequest="100"
+                                    LoadingPlaceholder="placeholder.png"
+                                    Source="{Binding Slika, Converter={StaticResource imgConv}}" />
+
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <Frame Padding="10,0,10,0" BackgroundColor="#001970">
+                                        <Label Text="{Binding IstaknutOglas}" TextColor="White" />
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <Label Text="{Binding Cijena, StringFormat='€{0}'}" TextColor="#303F9F" />
+                                    <Label
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="{Binding DatumPostavljanjaFormat}"
+                                        TextColor="#303F9F" />
+                                </StackLayout>
+
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Text="{Binding Naziv}"
+                                    TextColor="#303F9F" />
+                                <StackLayout
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <Image Source="locationicon.png" />
+                                    <Label
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Lokacija}"
+                                        TextColor="#303F9F"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

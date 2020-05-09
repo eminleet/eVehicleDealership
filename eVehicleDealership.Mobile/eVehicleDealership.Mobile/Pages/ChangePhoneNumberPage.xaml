@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.ChangePhoneNumberPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:eVehicleDealership.Mobile.Behaviors"
+    xmlns:Validators="clr-namespace:eVehicleDealership.Mobile.Validators.Implementations"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout Margin="10" VerticalOptions="CenterAndExpand">
+            <StackLayout.Behaviors>
+                <Behaviors:ValidationGroupBehavior x:Name="form" />
+            </StackLayout.Behaviors>
+            <Label
+                Margin="20"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="PROMJENA BROJA TELEFONA"
+                TextColor="#707070" />
+            <Label
+                x:Name="LblPhoneNumber"
+                Margin="20"
+                FontSize="Subtitle"
+                HorizontalOptions="Center"
+                TextColor="#707070" />
+            <Entry
+                x:Name="EntPhoneNumber"
+                Margin="10"
+                Keyboard="Telephone"
+                Placeholder="06xxxxxxx"
+                PlaceholderColor="#707070">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                            <Validators:FormatValidator Format="^(\+)?([ 0-9]){9,16}$" Message="Nepravilan format!" />
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
+            <Label
+                x:Name="LblWarning"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Text="Niste unijeli obavezno polje!"
+                TextColor="Red">
+                <Label.Triggers>
+                    <DataTrigger
+                        Binding="{Binding Source={x:Reference BtnChangePhoneNumber}, Path=IsEnabled}"
+                        TargetType="Label"
+                        Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Button
+                x:Name="BtnChangePhoneNumber"
+                Margin="20"
+                BackgroundColor="#303F9F"
+                Clicked="BtnChangePhoneNumber_Clicked"
+                IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+                Text="Izmijeni broj telefona"
+                TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

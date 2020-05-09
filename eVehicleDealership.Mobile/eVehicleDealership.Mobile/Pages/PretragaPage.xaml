@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eVehicleDealership.Mobile.Pages.PretragaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ios:Page.UseSafeArea="True"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar
+                x:Name="SearchBar"
+                Placeholder="Pretraga vozila"
+                TextChanged="SearchBar_TextChanged" />
+            <ListView
+                x:Name="LvPretraga"
+                HasUnevenRows="False"
+                HeightRequest="300"
+                HorizontalOptions="StartAndExpand"
+                RowHeight="60"
+                SeparatorVisibility="None"
+                VerticalOptions="StartAndExpand" ItemSelected="LvPretraga_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" BackgroundColor="White">
+                                <Label
+                                    FontSize="Medium"
+                                    Text="{Binding Naziv}"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
