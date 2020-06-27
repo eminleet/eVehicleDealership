@@ -151,36 +151,11 @@ namespace eVehicleDealership.Mobile.Pages
             vozilo.ModelId = modelId;
             vozilo.Opis = KratkiOpis.Text;
 
-            ResetControls();
             var response = await APIService.DodajVozilo(vozilo);
             if (response == null) return;
             var voziloId = response.VoziloId;
 
             await Navigation.PushAsync(new DodajSlikuVozilaPage(voziloId));
-        }
-
-        private void ResetControls()
-        {
-            stanje = "Korišteno";
-            FrameKoristeno.BackgroundColor = Color.FromHex("#0779E4");
-            LblKoristeno.TextColor = Color.White;
-            FrameNovo.BackgroundColor = Color.White;
-            LblNovo.TextColor = Color.Black;
-
-            EntNaslov.Text = "";
-            PickerProizvodjac.SelectedIndex = 0;
-            PickerModel.SelectedIndex = 0;
-            EntCijena.Text = "";
-            PickerKategorija.SelectedIndex = 0;
-            PickerDrzava.SelectedIndex = 0;
-            PickerGrad.SelectedIndex = 0;
-            PickerGodiste.SelectedIndex = 0;
-            PickerKubikaza.SelectedIndex = 0;
-            EntKonjskihSnaga.Text = "";
-            PickerBoja.SelectedIndex = -1;
-            PickerTransmisija.SelectedIndex = -1;
-            PickerGorivo.SelectedIndex = -1;
-            KratkiOpis.Text = "";
         }
 
         private void PickerKategorija_SelectedIndexChanged(object sender, EventArgs e)

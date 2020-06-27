@@ -60,9 +60,9 @@ namespace eVehicleDealership.Mobile
 
             for (int i = 0; i < zajednickeOcjene1.Count; i++)
             {
-                brojnik = zajednickeOcjene1[i].DataOcjena * zajednickeOcjene2[i].DataOcjena;
-                nazivnik1 = zajednickeOcjene1[i].DataOcjena * zajednickeOcjene1[i].DataOcjena;
-                nazivnik2 = zajednickeOcjene2[i].DataOcjena * zajednickeOcjene2[i].DataOcjena;
+                brojnik += zajednickeOcjene1[i].DataOcjena * zajednickeOcjene2[i].DataOcjena;
+                nazivnik1 += zajednickeOcjene1[i].DataOcjena * zajednickeOcjene1[i].DataOcjena;
+                nazivnik2 += zajednickeOcjene2[i].DataOcjena * zajednickeOcjene2[i].DataOcjena;
             }
             nazivnik1 = Math.Sqrt(nazivnik1);
             nazivnik2 = Math.Sqrt(nazivnik2);
