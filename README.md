@@ -1,16 +1,16 @@
 # eVehicleDealership
-FIT :: Razvoj softvera II :: Seminarski rad
+FIT :: Software Development II :: Seminarski rad
 
-**Desktop :: WinForms :: Login podaci:**<br/> 
-- Za ulogu administratora:<br/>
+**Desktop :: WinForms :: Login credentials:**<br/> 
+- For administrator:<br/>
 *Email:* admin@admin.com<br/>
 *Password:* testtest
 
-- Za ulogu uposlenika:<br/>
+- For employee:<br/>
 *Email:* uposlenik@uposlenik.com<br/>
 *Password:* testtest
 
-**Mobile :: Xamarin :: Login podaci**:<br/>
+**Mobile :: Xamarin :: Login credentials**:<br/>
 
 - *Email:* mobile@mobile.com<br/>
 *Password:* testtest
