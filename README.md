@@ -1,5 +1,5 @@
 # eVehicleDealership
-FIT :: Software Development II :: Seminarski rad
+FIT :: Software Development II :: Project
 
 **Desktop :: WinForms :: Login credentials:**<br/> 
 - For administrator:<br/>
